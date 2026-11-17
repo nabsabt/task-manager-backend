@@ -15,8 +15,17 @@ export class TaskService {
     );
   }
 
-  public async fetchTasksFromDB(): Promise<Array<any>> {
-    const result = await this.taskConnection.find().toArray();
-    return result;
+  public async fetchTasksFromDB(
+    page: number,
+    limit: number,
+  ): Promise<{ tasks: Array<Tasks>; datalength: number }> {
+    const datalength = await this.taskConnection.countDocuments();
+    const tasks = await this.taskConnection
+      .find({})
+      .skip(page * limit)
+      .limit(limit)
+      .toArray();
+
+    return { tasks, datalength };
   }
 }

@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Tasks, TaskSchema } from './@Schema/task.schema.js';
 import { TaskService } from './@Service/task.service.js';
 import { TaskController } from './@Controller/task.controller.js';
+import { AuthController } from './@Controller/auth.controller.js';
+import { AuthService } from './@Service/auth.service.js';
 
 @Module({
   imports: [
@@ -23,8 +25,8 @@ import { TaskController } from './@Controller/task.controller.js';
       },
     ]),
   ],
-  controllers: [TaskController],
-  providers: [TaskService],
+  controllers: [TaskController, AuthController],
+  providers: [TaskService, AuthService],
 })
 export class AppModule {
   constructor() {}
