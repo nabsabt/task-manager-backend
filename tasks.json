@@ -1,0 +1,203 @@
+//Pre-defined, AI-generated tasks, which are imported in DB at initialization.
+[
+  {
+    "name": "Urgent task",
+    "status": "todo",
+    "description": "This task needs to be done till Monday, next week. John Swift needs this to proceed with the service management project."
+  },
+  {
+    "name": "Fix authentication bug",
+    "status": "inprogress",
+    "description": "Users are occasionally redirected to the login page after successfully authenticating. Investigate the token refresh mechanism and implement a permanent fix."
+  },
+  {
+    "name": "Update user dashboard",
+    "status": "todo",
+    "description": "Redesign the user dashboard to display recently accessed projects, notifications and account statistics. Follow the latest Figma designs."
+  },
+  {
+    "name": "Database optimization",
+    "status": "done",
+    "description": "Analyze slow database queries and add appropriate indexes to improve application performance. Verify the results using production-like data."
+  },
+  {
+    "name": "Implement pagination",
+    "status": "inprogress",
+    "description": "Add server-side pagination to the task management table. Users should be able to select the page size and navigate between pages."
+  },
+  {
+    "name": "Write unit tests",
+    "status": "todo",
+    "description": "Create unit tests for the authentication service, including successful login, invalid credentials, expired tokens and refresh token scenarios."
+  },
+  {
+    "name": "Fix responsive layout",
+    "status": "todo",
+    "description": "The application navigation menu overlaps the main content on smaller screens. Fix the layout and verify it on mobile and tablet resolutions."
+  },
+  {
+    "name": "Deploy staging environment",
+    "status": "done",
+    "description": "Deploy the latest application version to the staging environment and verify that all required services are running correctly."
+  },
+  {
+    "name": "Review pull requests",
+    "status": "inprogress",
+    "description": "Review the pending pull requests from the development team. Check code quality, naming conventions, potential bugs and test coverage."
+  },
+  {
+    "name": "Update API documentation",
+    "status": "todo",
+    "description": "Document all publicly available REST API endpoints, including request parameters, response formats, authentication requirements and error codes."
+  },
+  {
+    "name": "Fix notification service",
+    "status": "inprogress",
+    "description": "Some users are receiving duplicate email notifications. Investigate the event processing logic and ensure that notifications are sent only once."
+  },
+  {
+    "name": "Remove deprecated dependencies",
+    "status": "done",
+    "description": "Identify outdated npm packages and replace deprecated dependencies with supported alternatives. Run the full test suite after upgrading."
+  },
+  {
+    "name": "Create admin user management",
+    "status": "todo",
+    "description": "Implement an administration page where authorized users can create, edit, deactivate and delete user accounts."
+  },
+  {
+    "name": "Improve application logging",
+    "status": "todo",
+    "description": "Introduce structured logging across backend services. Include request IDs, timestamps and relevant error details to simplify troubleshooting."
+  },
+  {
+    "name": "Investigate server downtime",
+    "status": "inprogress",
+    "description": "The production API experienced unexpected downtime yesterday afternoon. Review server logs, identify the root cause and prepare an incident report."
+  },
+  {
+    "name": "Add password reset functionality",
+    "status": "done",
+    "description": "Implement a secure password reset workflow using time-limited email verification tokens. Include validation and appropriate error messages."
+  },
+  {
+    "name": "Prepare sprint retrospective",
+    "status": "todo",
+    "description": "Collect feedback from team members and prepare a summary of completed work, blockers and improvement opportunities for the next sprint."
+  },
+  {
+    "name": "Refactor task service",
+    "status": "inprogress",
+    "description": "Split the task service into smaller, reusable methods. Improve separation of concerns and remove duplicated business logic."
+  },
+  {
+    "name": "Implement file uploads",
+    "status": "todo",
+    "description": "Allow users to upload documents and images to their projects. Validate file types and sizes and store uploaded files securely."
+  },
+  {
+    "name": "Fix broken navigation links",
+    "status": "done",
+    "description": "Several navigation links point to outdated routes. Update the routing configuration and verify that all menu items work correctly."
+  },
+  {
+    "name": "Add dark mode support",
+    "status": "todo",
+    "description": "Introduce a dark theme for the application. Allow users to switch between light and dark modes and persist their preference."
+  },
+  {
+    "name": "Optimize image loading",
+    "status": "inprogress",
+    "description": "Improve frontend loading performance by implementing lazy loading, responsive image sizes and modern image formats where supported."
+  },
+  {
+    "name": "Create project overview page",
+    "status": "todo",
+    "description": "Build a project overview page displaying project details, assigned team members, current progress and recently completed activities."
+  },
+  {
+    "name": "Fix incorrect date formatting",
+    "status": "done",
+    "description": "Dates are displayed inconsistently across different components. Standardize date formatting and ensure correct timezone handling."
+  },
+  {
+    "name": "Implement role-based permissions",
+    "status": "inprogress",
+    "description": "Introduce role-based access control for administrators, managers and regular users. Restrict sensitive operations according to user permissions."
+  },
+  {
+    "name": "Set up automated backups",
+    "status": "todo",
+    "description": "Configure automated daily database backups and define a retention policy. Document the recovery procedure for emergency situations."
+  },
+  {
+    "name": "Improve search functionality",
+    "status": "todo",
+    "description": "Add advanced filtering and full-text search to the task list. Users should be able to search by task name and description."
+  },
+  {
+    "name": "Resolve memory leak",
+    "status": "inprogress",
+    "description": "The backend memory consumption increases continuously during long-running sessions. Profile the application and identify resources that are not being released."
+  },
+  {
+    "name": "Create onboarding tutorial",
+    "status": "done",
+    "description": "Prepare a short interactive onboarding tutorial explaining the main application features to first-time users."
+  },
+  {
+    "name": "Configure CI pipeline",
+    "status": "todo",
+    "description": "Set up a continuous integration pipeline that runs linting, unit tests and production builds whenever changes are pushed to the main branch."
+  },
+  {
+    "name": "Update company branding",
+    "status": "todo",
+    "description": "Replace outdated company logos, colors and typography across the application according to the new corporate identity guidelines."
+  },
+  {
+    "name": "Implement activity history",
+    "status": "inprogress",
+    "description": "Track important user actions and display an activity history on each project. Include timestamps and the user responsible for each action."
+  },
+  {
+    "name": "Fix broken email templates",
+    "status": "done",
+    "description": "Correct formatting issues in transactional email templates and verify that messages render properly in common email clients."
+  },
+  {
+    "name": "Add bulk task operations",
+    "status": "todo",
+    "description": "Allow administrators to select multiple tasks and update their status or delete them in a single operation."
+  },
+  {
+    "name": "Review security vulnerabilities",
+    "status": "inprogress",
+    "description": "Run a security audit of frontend and backend dependencies. Investigate reported vulnerabilities and prioritize fixes based on severity."
+  },
+  {
+    "name": "Create database migration scripts",
+    "status": "todo",
+    "description": "Prepare migration scripts for the upcoming database schema changes. Ensure that existing records remain intact during deployment."
+  },
+  {
+    "name": "Improve error handling",
+    "status": "done",
+    "description": "Standardize API error responses and implement consistent frontend error notifications for failed requests."
+  },
+  {
+    "name": "Implement task filtering",
+    "status": "inprogress",
+    "description": "Add filters for task status and allow users to combine multiple filtering conditions. Make sure filters can be cleared easily."
+  },
+  {
+    "name": "Prepare monthly performance report",
+    "status": "todo",
+    "description": "Collect application performance metrics and prepare a monthly report covering response times, error rates and infrastructure utilization."
+  },
+  {
+    "name": "Upgrade Angular framework",
+    "status": "done",
+    "description": "Upgrade the frontend application to the latest supported Angular version. Resolve breaking changes and verify compatibility with existing dependencies."
+  }
+]
