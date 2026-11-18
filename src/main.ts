@@ -17,10 +17,6 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
 
-  /**
-   * If PROD, set as requested.
-   * If nginx is used, no need to set at all.
-   */
   app.enableCors({
     origin: 'http://localhost:4200',
   });

@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Tasks, TaskSchema } from './@Schema/task.schema.js';
@@ -7,6 +7,7 @@ import { TaskController } from './@Controller/task.controller.js';
 import { AuthController } from './@Controller/auth.controller.js';
 import { AuthService } from './@Service/auth.service.js';
 import { SocketGateway } from './Socket/socket.gateway.js';
+import { AuthMiddleware } from './@Middleware/auth.middleware.js';
 
 @Module({
   imports: [
@@ -31,4 +32,13 @@ import { SocketGateway } from './Socket/socket.gateway.js';
 })
 export class AppModule {
   constructor() {}
+  configure(consumer: MiddlewareConsumer) {
+    /**
+     * Apply the AuthMiddleware to all routes except for login'
+     */
+    consumer.apply(AuthMiddleware).forRoutes({
+      path: 'task/*',
+      method: RequestMethod.ALL,
+    });
+  }
 }

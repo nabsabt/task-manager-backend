@@ -5,7 +5,7 @@ import { MOCKED_USERS } from '../mocked.users.js';
 export class AuthService {
   /**
    * To simulate real auth process, function returns a Promise,
-   * with intentional delay.
+   * with intentional delay to simulate real-life auth process.
    * WARNING: This is a test case, passwords are stored unsafe. NEVER store any real user password without bcrypt.
    */
   public async postLogin(
