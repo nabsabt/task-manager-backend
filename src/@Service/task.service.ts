@@ -50,27 +50,55 @@ export class TaskService {
   }
 
   public async updateTask(task: Task): Promise<{ status: string }> {
-    const _id = new this.mongoose.Types.ObjectId(task._id);
-    try {
-      const update = await this.taskConnection.updateOne(
-        { _id: _id },
-        {
-          $set: {
-            name: task.name,
-            description: task.description,
-            status: task.status,
+    if (task._id) {
+      /**
+       * update task->
+       */
+      const _id = new this.mongoose.Types.ObjectId(task._id);
+      try {
+        const update = await this.taskConnection.updateOne(
+          { _id: _id },
+          {
+            $set: {
+              name: task.name,
+              description: task.description,
+              status: task.status,
+            },
           },
-        },
-      );
-      if (update) {
-        return { status: `Successfully updated task ${task._id}` };
-      } else {
-        return { status: `No task found with this id! nothing happened!` };
+        );
+        if (update.modifiedCount > 0) {
+          return { status: `Successfully updated task ${task._id}` };
+        } else {
+          return { status: `Nothing happened!` };
+        }
+      } catch (error: any) {
+        throw new InternalServerErrorException(
+          `Could not modify task ${task._id}. Details: ${error.toString()}`,
+        );
       }
-    } catch (error: any) {
-      throw new InternalServerErrorException(
-        `Could not modify task ${task._id}. Details: ${error.toString()}`,
-      );
+    } else {
+      /**
+       * insert new task
+       */
+      try {
+        const newTask: Tasks = {
+          name: task.name,
+          status: task.status,
+          description: task.description,
+        };
+        const insert = await this.taskConnection.insertOne(newTask);
+        if (insert.insertedId) {
+          return { status: `Successfully added new task ${insert.insertedId}` };
+        } else {
+          return {
+            status: `Could not insert new task ${task.name}, no change happened.`,
+          };
+        }
+      } catch (error: any) {
+        throw new InternalServerErrorException(
+          `Could not add new task ${task.name}. Details: ${error.toString()}`,
+        );
+      }
     }
   }
 
