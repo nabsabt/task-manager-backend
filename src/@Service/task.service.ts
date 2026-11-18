@@ -1,8 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Mongoose, type Connection, type Model } from 'mongoose';
 import { Tasks } from '../@Schema/task.schema.js';
-import { Task } from '../@Model/task.manager.interface.js';
+import { SocketData, Task } from '../@Model/task.manager.interface.js';
+import { SocketGateway } from '../Socket/socket.gateway.js';
 
 @Injectable()
 export class TaskService {
@@ -11,6 +16,7 @@ export class TaskService {
   constructor(
     @InjectModel(Tasks.name) private taskModel: Model<Tasks>,
     @InjectConnection() private connection: Connection,
+    @Inject(SocketGateway) private socketService: SocketGateway,
   ) {
     this.taskConnection = this.connection.collection<Tasks>(
       this.taskModel.collection.name,
@@ -67,6 +73,12 @@ export class TaskService {
           },
         );
         if (update.modifiedCount > 0) {
+          const socketdata: SocketData = {
+            message: `Updated task: ${task.name}`,
+            action: 'update',
+            data: task,
+          };
+          this.socketService.sendDataChangeMessage(socketdata);
           return { status: `Successfully updated task ${task._id}` };
         } else {
           return { status: `Nothing happened!` };
@@ -88,6 +100,12 @@ export class TaskService {
         };
         const insert = await this.taskConnection.insertOne(newTask);
         if (insert.insertedId) {
+          const socketdata: SocketData = {
+            message: `Added new task: ${task.name}`,
+            action: 'new',
+            data: task,
+          };
+          this.socketService.sendDataChangeMessage(socketdata);
           return { status: `Successfully added new task ${insert.insertedId}` };
         } else {
           return {
@@ -107,6 +125,17 @@ export class TaskService {
     try {
       const deleted = await this.taskConnection.deleteOne({ _id: _id });
       if ((deleted.deletedCount = 1)) {
+        const socketdata: SocketData = {
+          message: `Task has just been deleted: ${id}`,
+          action: 'delete',
+          data: {
+            _id: id,
+            name: '',
+            description: '',
+            status: 'done',
+          },
+        };
+        this.socketService.sendDataChangeMessage(socketdata);
         return { status: `Successfully deleted task ${id}` };
       } else {
         return { status: `No task found with this id! nothing happened!` };
