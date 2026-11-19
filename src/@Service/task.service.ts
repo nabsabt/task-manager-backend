@@ -100,6 +100,7 @@ export class TaskService {
         };
         const insert = await this.taskConnection.insertOne(newTask);
         if (insert.insertedId) {
+          task._id = insert.insertedId.toString();
           const socketdata: SocketData = {
             message: `Added new task: ${task.name}`,
             action: 'new',
